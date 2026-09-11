@@ -81,8 +81,12 @@ class Simulator:
         self.network = network
         self.nb_drones = nb_drones
 
-    def run(self) -> SimulationResult:
+    def run(self, max_turns: int | None = None) -> SimulationResult:
         """Run the full simulation: route planning followed by scheduling.
+
+        Args:
+            max_turns: Optional hard cap on the number of turns the
+                scheduler will attempt before raising DeadlockError.
 
         Returns:
             A SimulationResult describing the outcome.
@@ -96,7 +100,7 @@ class Simulator:
         self._assign_initial_paths(drones)
 
         scheduler = Scheduler(self.network, drones)
-        turn_log = scheduler.run()
+        turn_log = scheduler.run(max_turns=max_turns)
 
         return SimulationResult(
             turn_log=turn_log,
