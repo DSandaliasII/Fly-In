@@ -1,0 +1,18 @@
+# Medium: Circular loop, 6 drones. Target <= 15 turns.
+# Two lanes of differing capacity around a loop, merging before goal.
+nb_drones: 6
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 10 10 [color=yellow]
+hub: fast_junction 2 2 [zone=normal color=blue]
+hub: fast_path 4 2 [zone=normal color=blue max_drones=2]
+hub: slow_path1 2 6 [zone=normal color=red]
+hub: slow_path2 4 6 [zone=normal color=red]
+hub: merge_point 6 4 [zone=normal color=yellow max_drones=3]
+connection: hub-fast_junction
+connection: fast_junction-fast_path
+connection: fast_path-merge_point
+connection: hub-slow_path1
+connection: slow_path1-slow_path2
+connection: slow_path2-merge_point
+connection: merge_point-goal

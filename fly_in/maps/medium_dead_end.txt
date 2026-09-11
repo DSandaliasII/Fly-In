@@ -1,0 +1,16 @@
+# Medium: Dead end trap, 5 drones. Target <= 12 turns.
+# "decoy" is a tempting-looking shortcut that dead-ends and must be
+# avoided by correct shortest-path routing.
+nb_drones: 5
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 10 10 [color=yellow]
+hub: decoy 2 2 [zone=normal color=gray]
+hub: deadend 4 4 [zone=normal color=gray]
+hub: gateway 3 6 [zone=normal color=blue max_drones=2]
+hub: relay 6 8 [zone=normal color=blue]
+connection: hub-decoy
+connection: decoy-deadend
+connection: hub-gateway
+connection: gateway-relay
+connection: relay-goal

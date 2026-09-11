@@ -1,0 +1,8 @@
+# Easy: Basic capacity, 4 drones. Target <= 6 turns.
+nb_drones: 4
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 10 10 [color=yellow]
+hub: room 5 5 [zone=normal color=blue max_drones=4]
+connection: hub-room
+connection: room-goal

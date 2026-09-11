@@ -1,0 +1,15 @@
+# Medium: Priority puzzle, 5 drones. Target <= 12 turns.
+# priority_bypass is same raw cost as the restricted route but should be
+# favored by the tie-break; restricted route costs strictly more anyway.
+nb_drones: 5
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 10 10 [color=yellow]
+hub: gate 2 2 [zone=normal color=blue]
+hub: priority_bypass 5 1 [zone=priority color=green max_drones=3]
+hub: restricted_route 5 5 [zone=restricted color=red]
+connection: hub-gate
+connection: gate-priority_bypass
+connection: gate-restricted_route
+connection: priority_bypass-goal
+connection: restricted_route-goal

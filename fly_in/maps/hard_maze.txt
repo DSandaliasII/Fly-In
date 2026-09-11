@@ -1,0 +1,42 @@
+# Hard: Maze nightmare, 8 drones. Target <= 30 turns.
+nb_drones: 8
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 12 6 [color=yellow]
+
+hub: gate1 2 0 [zone=normal color=orange max_drones=1]
+hub: gate2 2 3 [zone=normal color=orange max_drones=1]
+hub: gate3 2 6 [zone=normal color=orange max_drones=1]
+
+hub: waiting_area1 4 0 [zone=normal color=blue max_drones=1]
+hub: waiting_area2 4 3 [zone=normal color=blue max_drones=1]
+hub: waiting_area3 4 6 [zone=normal color=blue max_drones=1]
+
+hub: restricted1 6 0 [zone=restricted color=red]
+hub: restricted2 6 3 [zone=restricted color=red]
+hub: restricted3 6 6 [zone=restricted color=red]
+
+hub: priority_loop1 8 1 [zone=priority color=cyan]
+hub: priority_loop2 8 4 [zone=priority color=cyan]
+
+hub: convergence 10 3 [zone=normal color=yellow max_drones=3]
+hub: final_bottleneck 11 4 [zone=normal color=orange max_drones=1]
+
+connection: hub-gate1
+connection: hub-gate2
+connection: hub-gate3
+connection: gate1-waiting_area1
+connection: gate2-waiting_area2
+connection: gate3-waiting_area3
+connection: waiting_area1-restricted1
+connection: waiting_area2-restricted2
+connection: waiting_area3-restricted3
+connection: restricted1-convergence
+connection: restricted2-convergence
+connection: restricted3-convergence
+connection: waiting_area1-priority_loop1
+connection: waiting_area2-priority_loop1
+connection: priority_loop1-priority_loop2 [max_link_capacity=2]
+connection: priority_loop2-convergence
+connection: convergence-final_bottleneck
+connection: final_bottleneck-goal

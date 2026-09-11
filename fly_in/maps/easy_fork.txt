@@ -1,0 +1,13 @@
+# Easy: Simple fork, 4 drones. Target <= 8 turns.
+nb_drones: 4
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 10 10 [color=yellow]
+hub: junction 3 3 [zone=normal color=yellow]
+hub: pathA 5 1 [zone=normal color=blue]
+hub: pathB 5 5 [zone=normal color=blue]
+connection: hub-junction
+connection: junction-pathA
+connection: junction-pathB
+connection: pathA-goal
+connection: pathB-goal

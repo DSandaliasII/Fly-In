@@ -1,0 +1,31 @@
+# Hard: Ultimate challenge, 15 drones. Target <= 45 turns.
+# Combines parallel lanes, a shared capacity-limited restricted zone, and
+# a funnel bottleneck before the goal.
+nb_drones: 15
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 14 8 [color=yellow]
+
+hub: laneA 2 1 [zone=normal color=blue max_drones=2]
+hub: laneB 2 4 [zone=normal color=blue max_drones=2]
+hub: laneC 2 7 [zone=normal color=blue max_drones=2]
+
+hub: skybridge 6 4 [zone=restricted color=red max_drones=3]
+
+hub: priorityA 4 1 [zone=priority color=green]
+hub: priorityB 4 7 [zone=priority color=green]
+
+hub: convergence 9 4 [zone=normal color=yellow max_drones=4]
+hub: funnel 12 4 [zone=normal color=orange max_drones=2]
+
+connection: hub-laneA [max_link_capacity=3]
+connection: hub-laneB [max_link_capacity=3]
+connection: hub-laneC [max_link_capacity=3]
+connection: laneA-priorityA
+connection: priorityA-skybridge [max_link_capacity=2]
+connection: laneB-skybridge [max_link_capacity=2]
+connection: laneC-priorityB
+connection: priorityB-skybridge [max_link_capacity=2]
+connection: skybridge-convergence
+connection: convergence-funnel [max_link_capacity=2]
+connection: funnel-goal

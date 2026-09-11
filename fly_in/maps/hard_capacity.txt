@@ -1,0 +1,27 @@
+# Hard: Capacity hell, 12 drones. Target <= 35 turns.
+nb_drones: 12
+
+start_hub: hub 0 0 [color=green]
+end_hub: goal 12 12 [color=yellow]
+
+hub: laneA1 2 1 [zone=normal color=blue]
+hub: laneA2 4 1 [zone=normal color=blue max_drones=2]
+hub: laneB1 2 4 [zone=normal color=blue]
+hub: laneB2 4 4 [zone=normal color=blue max_drones=2]
+hub: laneC1 2 7 [zone=normal color=blue]
+hub: laneC2 4 7 [zone=normal color=blue max_drones=2]
+
+hub: choke1 7 4 [zone=normal color=red max_drones=2]
+hub: choke2 9 4 [zone=normal color=red max_drones=2]
+
+connection: hub-laneA1 [max_link_capacity=2]
+connection: laneA1-laneA2
+connection: laneA2-choke1 [max_link_capacity=2]
+connection: hub-laneB1 [max_link_capacity=2]
+connection: laneB1-laneB2
+connection: laneB2-choke1 [max_link_capacity=2]
+connection: hub-laneC1 [max_link_capacity=2]
+connection: laneC1-laneC2
+connection: laneC2-choke1 [max_link_capacity=2]
+connection: choke1-choke2 [max_link_capacity=2]
+connection: choke2-goal [max_link_capacity=3]
