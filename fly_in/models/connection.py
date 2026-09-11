@@ -111,5 +111,3 @@ class Connection:
     def __hash__(self) -> int:
         """Hash connections by their canonical name."""
         return hash(self.name)
-
-wagwan
