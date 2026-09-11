@@ -1,11 +1,3 @@
-"""Colored terminal rendering of a completed simulation.
-
-Uses plain ANSI escape codes (no external dependency) to color each drone
-movement by the type/color of its destination zone, and renders a short
-legend plus summary statistics. This satisfies the "colored terminal
-output" visual representation requirement.
-"""
-
 from __future__ import annotations
 
 import re
